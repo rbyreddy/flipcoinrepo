@@ -5,9 +5,9 @@ IS_HEAD=0
 IS_TAIL=1
 headNumber=0
 tailNumber=0
-totalFlip=20
+WINING_NUMBER=21
 
-while [ $totalFlip -gt 0 ]
+while [ $headNumber -lt $WINING_NUMBER ] && [ $tailNumber -lt $WINING_NUMBER ]
 do
 	randomValue=$((RANDOM%2))
 	if [ $randomValue -eq $IS_HEAD ]
@@ -21,5 +21,16 @@ do
 	((totalFlip--))
 done
 
-echo "Number of time head " $headNumber
-echo "Number of time tails " $tailNumber
+if [ $headNumber -eq $tailNumber ]
+then
+	echo "Tie"
+elif [ $headNumber -gt $tailNumber ]
+	then
+		echo "Head won by "$(($headNumber - $tailNumber))
+	else
+		echo "Tail won by "$(($tailNumber - $headNumber))
+fi
+
+#echo "Number of time head " $headNumber
+#echo "Number of time tails " $tailNumber
+
